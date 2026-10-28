@@ -22,4 +22,14 @@ public partial class TournamentManager : Node
     {
         GD.Print(participantName, " izstājās");
     }
+
+    /*TODO:
+    Izveido jaunu scēnu Scenes/Tournament.tscn pēc koka zemāk (abiem bērna mezgliem pievieno vienu un to pašu Participant.cs).
+    Participant klasē pievieno Finished signāla pieteikumu un nosūtīšanu metodē ApplyPenalty brīdī, kad enerģija sasniedz nulli (pirms soda pārbaudi !IsActive() || amount <= 0).
+    Nospied Build, atlasi dalībnieka mezglu un Node → Signals sarakstā atrodi Finished signālu.
+    
+    Tournament (Node, skripts TournamentManager.cs)
+    ├── Anna (Node, skripts Participant.cs)
+    └── Janis (Node, skripts Participant.cs)
+    */
 }
