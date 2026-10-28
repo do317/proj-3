@@ -1,10 +1,11 @@
 using System;
+using Godot;
 
-public class Captain : Participant
+public partial class Captain : Participant
 {
     private int stability = 10;
 
-    public Captain(string name) : base(name, 150) { }
+    public void Setup(string name) { base.Setup(name,150); }
 
     public override void ApplyPenalty(int amount)
     {

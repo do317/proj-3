@@ -1,23 +1,26 @@
 using Godot;
 using System;
 
-public class Participant
+public partial class Participant : Node
 {
-    public string Name = "";
+    public string ParticipantName  = "";
     private int energy;
     public int Level = 1;
 
-	public Participant(string name, int energy)
+	public void Setup(string name, int energy)
 	{
-		Name = name;
+		ParticipantName  = name;
 		this.energy = energy;
 	}
+	[Signal]
+	public delegate void FinishedEventHandler(string participantName);
 
 	public virtual void ApplyPenalty(int amount)
 	{
-		if (amount < 0) return; // Negatīvu sodu nepiemērojam.
-		this.energy -= amount;
-		if (this.energy < 0) this.energy = 0;
+		if (!IsActive() || amount <= 0) return;
+		energy = Math.Max(0, energy - amount);
+		if (energy == 0)
+			EmitSignal(SignalName.Finished, ParticipantName);
 	}
 
 	public bool IsActive()
