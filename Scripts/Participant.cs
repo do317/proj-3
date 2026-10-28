@@ -13,7 +13,7 @@ public class Participant
 		this.energy = energy;
 	}
 
-	public void ApplyPenalty(int amount)
+	public virtual void ApplyPenalty(int amount)
 	{
 		if (amount < 0) return; // Negatīvu sodu nepiemērojam.
 		this.energy -= amount;
@@ -24,4 +24,6 @@ public class Participant
 	{
 		return this.energy > 0;
 	}
+	
+    public int GetEnergy() { return this.energy; }
 }
