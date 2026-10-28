@@ -1,15 +1,27 @@
 using Godot;
 using System;
 
-public partial class Participant : Node
+public class Participant
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    public string Name = "";
+    private int energy;
+    public int Level = 1;
+
+	public Participant(string name, int energy)
 	{
+		Name = name;
+		this.energy = energy;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public void ApplyPenalty(int amount)
 	{
+		if (amount < 0) return; // Negatīvu sodu nepiemērojam.
+		this.energy -= amount;
+		if (this.energy < 0) this.energy = 0;
+	}
+
+	public bool IsActive()
+	{
+		return this.energy > 0;
 	}
 }
